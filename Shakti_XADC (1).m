@@ -16,9 +16,12 @@ grid on
 
 %Shweta's Code
 x_var_new=[0.000, 0.438, 0.830, 1.228, 1.620, 2.050, 2.446, 2.842 3.241];
+x_th=[0    544   1030   1524   2011   2544   3036   3528   4023];
 y_new=[0.000000 540 1028 1518 1999 2526 3010 3500 3995];
-x_theoretical_1=(((x_var_new)*4096)/3);
-x_theoretical = cast(x_theoretical_1,"uint16");
+y_ch_2=[0 560 1035 1525 2009 2540 3030 4011];
+x_theoretical_1=(((x_var_new)*4096)/3.3);
+x_theoretical = cast(x_theoretical_1,"uint16")
+
 plot(x_theoretical,x_theoretical)
 hold on
 plot(x_theoretical,y_new)
