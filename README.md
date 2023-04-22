@@ -5,7 +5,8 @@ Has documents which can be referred to for pin mapping, register addresses, etc.
 ## LED GPIO
 This code blinks all the on board LEDs.
 ## UART
-Sends and receives charaters using on board UART modules.
+Sends and receives charaters using on board UART modules.  
+
 UART0 is connected to JTAG and reception/transmission can be done either by a C code or by directly writing/reading values from an address using GDB.
 Reference for UART0 programming: https://blogshakti.org.in/shakti-uart/
 UART1 and UART2 are on board modules. In order to enable both the modules set the pinmux to 0x55.
