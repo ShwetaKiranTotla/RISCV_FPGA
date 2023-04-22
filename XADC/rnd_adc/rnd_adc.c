@@ -1,16 +1,3 @@
-/**
-@file xadc_default.c
-@brief  write data to flash by xadc
-@detail Contains driver codes to read and write flash using SPI interface.
-*/
-
-//Might wanna remove unnecessary header files
-
-/** 
- * @fn int main()
- * @brief Calls the xadc apis to read temperature and onchip voltage.
- * @return none
- */
 #ifndef XADC_DRIVER
 #define XADC_DRIVER
 
@@ -120,8 +107,8 @@ uint32_t xadc_read_ctrl_reg(uint32_t *address);
 uint32_t xadc_read_data(uint32_t *address);
 float xadc_onchip_temp(uint32_t value);
 float xadc_onchip_voltage(uint32_t value);
-float xadc_dedicated_channel(uint32_t value);
-
+float xadc_dedicated_channel_1(uint32_t value);
+float xadc_dedicated_channel_2(uint32_t value);
 #endif
 #include<stdio.h>
 #include "xadc_driver.h"
@@ -182,10 +169,37 @@ float xadc_onchip_temp(uint32_t value)
  * @param unsigned int (32-bit) value
  * @return float
  */
-float xadc_dedicated_channel(uint32_t value)
+float xadc_dedicated_channel_1(uint32_t value)
 {
-	return (((value >> 4)/4096.0f) );
+	return (((value >> 4)*3.3f/4096.0f) );
+	return (value >> 4);
 }
+float xadc_dedicated_channel_2(uint32_t value)
+{
+	return (((value >> 4)*3.3f/4096.0f) );
+	return (value >> 4);
+}
+float xadc_dedicated_channel_3(uint32_t value)
+{
+	return (((value >> 4)*3.3f/4096.0f) );
+	return (value >> 4);
+}
+float xadc_dedicated_channel_4(uint32_t value)
+{
+	return (((value >> 4)*3.3f/4096.0f) );
+	return (value >> 4);
+}
+float xadc_dedicated_channel_5(uint32_t value)
+{
+	return (((value >> 4)*3.3f/4096.0f) );
+	return (value >> 4);
+}
+float xadc_dedicated_channel_6(uint32_t value)
+{
+	return (((value >> 4)*3.3f/4096.0f) );
+	return (value >> 4);
+}
+
 #include <stdint.h>
 #include "xadc_driver.h"
 #include "uart.h"
@@ -207,58 +221,27 @@ void main()
                 //xadc_write_ctrl_reg(0x41304,0x3000);//Config register-1: Single channel mode(sequencer off)
                 //xadc_write_ctrl_reg(0x41308,0x1E00);//Config register-2: Division factor:30
 
-		uint32_t value_onchip_temp = xadc_read_data(0x41200);
-		printf("value_onchip_temp = %f\n", xadc_onchip_temp(value_onchip_temp));
+		uint32_t value_dedicated_channel_1 = xadc_read_data(0x41240);//at a5
+		printf("value_dedicated_channel_1= %f\n", xadc_dedicated_channel_1(value_dedicated_channel_1));
+
+		uint32_t value_dedicated_channel_2 = xadc_read_data(0x41250);//at a0
+		printf("value_dedicated_channel_2= %f\n", xadc_dedicated_channel_2(value_dedicated_channel_2));
+
+		uint32_t value_dedicated_channel_3 = xadc_read_data(0x41254);//A1
+		printf("value_dedicated_channel_3= %f\n", xadc_dedicated_channel_3(value_dedicated_channel_3));
+
+		uint32_t value_dedicated_channel_4 = xadc_read_data(0x41258);//A2
+		printf("value_dedicated_channel_4= %f\n", xadc_dedicated_channel_4(value_dedicated_channel_4));
+
+		uint32_t value_dedicated_channel_5 = xadc_read_data(0x4125c);//a3
+		printf("value_dedicated_channel_5= %f\n", xadc_dedicated_channel_5(value_dedicated_channel_5));
 
 
-		uint32_t value_onchip_voltage = xadc_read_data(0x41204);
-		printf("value_onchip_voltage= %f\n", xadc_onchip_voltage(value_onchip_voltage));
+		uint32_t value_dedicated_channel_6 = xadc_read_data(0x4127c);//a4
+		printf("value_dedicated_channel_6= %f\n", xadc_dedicated_channel_6(value_dedicated_channel_6));
 
-		uint32_t value_dedicated_channel = xadc_read_data(0x41250);
-		printf("value_dedicated_channel= %f\n", xadc_dedicated_channel(value_dedicated_channel));
+
 	}
 }
 
-/*Shweta's code:
 
-float xadc_onchip_voltage(uint32_t value)
-{
-	return (((value >> 4)*3.0f)/4096.0f );
-}
-uint32_t xadc_read_data(uint32_t *address)
-{
-	return(*address);
-}
-
-void main()
-{
-	while(1)
-	{	uint32_t value;
-		value = xadc_read_data(0x41204);
-		printf("value = %f\n", xadc_onchip_voltage(value));
-	}
-}
-*/
-/*
-//Tanish's code:
-//uint32_t xadc_read_ctrl_reg(uint32_t *address);//This function is not defined in the header file, just declaration is there
-
-float xadc_dedicated_channel(uint32_t value)
-{
-	return ((value >> 4)/4096.0f );
-}
-uint32_t xadc_read_data(uint32_t *address)
-{
-	return(*address);
-}
-
-void main()
-{
-//xadc_write_ctrl_reg(uint32_t *address, uint32_t data)//address and data needed for the control register
-	while(1)
-	{	uint32_t value;
-		value = xadc_read_data(0x4120C);//location where to read data?
-		printf("value = %f\n", xadc_dedicated_channel(value));
-	}
-}
-*/
