@@ -24,8 +24,9 @@ Channel 5 on Pin A3, read value at 0x4125c.
 Channel 6 on Pin A4, read value at 0x4127c.
 ## XDC Files
 Contains constraints file for Xilinx Artix 7 100T and Shakti Microprocessor.
-##Verilog
+## Verilog
 Code to define a register that generates pwm signals on GPIO Pin.
-##
+#
 fpga_top.bit is the bitstream of the Shakti module.
+##
 MAKEFILE is the makefile for the overall shakti-sdk toolchain.
