@@ -25,7 +25,7 @@ Channel 4 on Pin A2, read value at 0x41258.
 Channel 5 on Pin A3, read value at 0x4125c.  
 Channel 6 on Pin A4, read value at 0x4127c.
 
-##PWM 
+## PWM 
 There are totally 6 PWM Modules. Each of these modules are controlled majorly by 4 registers. They are:
 CLOCK- To set the prescaler for the inbuilt clock
 CONTROL- To set the mode of operation of PWM
