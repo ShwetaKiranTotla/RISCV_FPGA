@@ -26,7 +26,8 @@ Channel 2 on Pin A0, read value at 0x41250.
 Channel 3 on Pin A1, read value at 0x41254.  
 Channel 4 on Pin A2, read value at 0x41258.  
 Channel 5 on Pin A3, read value at 0x4125c.  
-Channel 6 on Pin A4, read value at 0x4127c.
+Channel 6 on Pin A4, read value at 0x4127c.  
+
 Code location Shakti/XADC/rnd_adc/rnd_adc.c  
 MATLAB Script for Precision Graph Shakti/XADC/Shakti_XADC.m  
 
