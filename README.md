@@ -13,8 +13,8 @@ Reference for pinmux: https://blogshakti.org.in/pinmux-in-shakti/
 After enabling these modules using pinmux in the UART C program (rnd_uart.c), rx1, tx1, rx2, tx1 values are available at io[0], io[1], io[2], and io[3] respectively.  
 
 ## UART_Interrupt
-Sends and receives charaters using on board UART modules using interrupt.
-UART2 module sends characters, Rx Interrupt is enabled in UART1 and these received characters are shown in serial monitor via the JTAG connected UART0
+Sends and receives charaters using on board UART modules using interrupt.  
+UART2 module sends characters, Rx Interrupt is enabled in UART1 and these received characters are shown in serial monitor via the JTAG connected UART0  
 ## XADC
 Uses 6 on board single ended ADC channels.  
 Single ended channel pins and addresses are as follows:  
